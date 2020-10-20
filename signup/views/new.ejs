@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<title>
+	Welcome!
+</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  	/******/
+	
+
+		body {
+			background-image: linear-gradient(to bottom right,#02b3e4,#02ccba);
+			margin-left: 70px;
+			max-width: 800px;
+		}
+
+	.screen-reader-only {
+		top:auto;
+		width:1px;
+		height:1px;
+		left:-10000px;
+		overflow:hidden;
+		position:absolute;
+	}
+	.action.screen-reader-only {left:auto;}
+	ul li {list-style-type: none}
+	/******/
+
+	/* simple */
+	#grid .flip-container, #grid :nth-child(0):focus {
+		-webkit-perspective: 1000;
+		-moz-perspective: 1000;
+		-ms-perspective: 1000;
+		perspective: 1000;
+
+		-ms-transform: perspective(1000px);
+		-moz-transform: perspective(1000px);
+			-moz-transform-style: preserve-3d; 
+			-ms-transform-style: preserve-3d; 
+
+
+	}
+		/* START: Accommodating for IE */
+		
+	#grid .flip-container:hover .back, #grid .flip-container.hover .back, #grid :nth-child(1):focus {
+	    -webkit-transform: rotateY(0deg);
+	    -moz-transform: rotateY(0deg);
+	    -o-transform: rotateY(0deg);
+	    -ms-transform: rotateY(0deg);
+	    transform: rotateY(0deg);
+	}
+
+	#grid .flip-container:hover .front, #grid .flip-container.hover .front, #grid :nth-child(1):focus {
+	    -webkit-transform: rotateY(180deg);
+	    -moz-transform: rotateY(180deg);
+	    -o-transform: rotateY(180deg);
+	    transform: rotateY(180deg);
+	}
+	
+	/* END: Accommodating for IE */
+
+	#grid .flip-container, #grid .front, #grid .back {
+		width: 500px;
+		height: 310px;
+		box-shadow:12px 15px 20px 0 rgba(95, 175, 255, 0.815);
+		
+		border-radius: 5px;
+	}
+
+	#grid .flipper, #grid :nth-child(1):focus {
+		-webkit-transition: 1s;
+		-webkit-transform-style: preserve-3d;
+		-ms-transition: 1s;
+
+		-moz-transition: 1s;
+		-moz-transform: perspective(1000px);
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+
+		transition: 1s;
+		transform-style: preserve-3d;
+
+		position: relative;
+	}
+
+	#grid .front, #grid .back {
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+		backface-visibility: hidden;
+
+	    -webkit-transition: 1s;
+	    -webkit-transform-style: preserve-3d;
+	    -webkit-transform: rotateY(0deg);
+
+	    -moz-transition: 1s;
+	    -moz-transform-style: preserve-3d;
+	    -moz-transform: rotateY(0deg);
+
+	    -o-transition: 1s;
+	    -o-transform-style: preserve-3d;
+	    -o-transform: rotateY(0deg);
+
+	    -ms-transition: 1s;
+	    -ms-transform-style: preserve-3d;
+	    -ms-transform: rotateY(0deg);
+
+	    transition: 1s;
+	    transform-style: preserve-3d;
+	    transform: rotateY(0deg);
+
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#grid .front {
+		-webkit-transform: rotateY(0deg);
+		-ms-transform: rotateY(0deg);
+		text-align: center;
+		background-color:white;
+		/*z-index: 2;*/
+	}
+	#grid :nth-child(0):focus { z-index: 2; }
+
+	#grid .back {
+		-webkit-transform: rotateY(-180deg);
+	    -moz-transform: rotateY(-180deg);
+	    -o-transform: rotateY(-180deg);
+	    -ms-transform: rotateY(-180deg);
+	    transform: rotateY(-180deg);
+	}
+
+	#grid .front .name {
+		font-size: 2em;
+		display: inline-block;
+		background: rgba(8, 8, 8, 0.9);
+		color: #f9faf5;
+		font-family: Courier;
+		padding: 5px 10px;
+		border-radius: 5px;
+		bottom: 60px;
+		left: 0;
+		left: 25%;
+		position: absolute;
+		
+		display: none;
+
+		-webkit-transform: rotate(-20deg);
+		-moz-transform: rotate(-20deg);
+		-ms-transform: rotate(-20deg);
+		transform: rotate(-20deg);
+	}
+
+	
+	#grid a.imgLink {
+		display:block;
+    width:500px;
+		height:310px;
+		text-align: left;
+		color: #f9faf5;
+		border: 3px solid #079ad9;
+		background-color:black;
+    /* IE8 Fallback */
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		font-size: 20px;
+		text-shadow: 0.1em 0.1em 0.05em rgba(80, 163, 218, 0.671);
+  }
+
+
+	#grid ul{
+		width:1080px;}
+	#grid ul li {
+		padding:	15px 15px 15px 15px;
+		float:left;
+		
+	}
+	#grid .fimg{
+		/* border: 3px solid #009797; */
+	}
+	#grid .flip-container :first-child:focus {outline: none;}
+	.input--submit {
+    position: relative;
+    left:150px;
+		top:2px;
+		color: #322647ec;
+		text-shadow: 0.075em 0.075em 0.05em rgba(102, 102, 102, 0.678);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    font-size:40px;
+    border-top: 0;border-bottom: 0;border-right: 0;border-left: 0;
+  }
+	/*.flip-container :nth-child(0) */
+	/* End Thumbnails */
+</style>
+</head>
+
+<body>
+	<p style="position: relative;color: indigo;text-shadow: 0.075em 0.075em 0.05em rgba(102, 102, 102, 0.678);font-size: 50px;margin-left:400px ">Auction House<br></style></p>
+	<div class="input--submit"><marquee direction="LEFT" scrollamount="13">
+		Eyes have lids, Auctions have bids! ;)</marquee>
+</div>
+  <div id="grid">
+	<ul> 
+
+			<li>
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+                
+                <img src="/images/product/p1.jpeg" class ="fimg">  
+							</div>
+							<div class="back">
+								<a class="imgLink" href="desc1.ejs"><ul><br><li>-Generic Handmade Vintage Gramophone!
+									<br><br><br><br>-Basic bid is 1000Rs.
+								  <br><br><br><br>-For description click anywhere inside this box!</li></ul></a>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				<li>
+						<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+							<div class="flipper">
+								<div class="front">
+									<img src="/images/product/p2.jpeg" class ="fimg"> 
+								</div>
+								<div class="back">
+									<a class="imgLink" href="desc2.ejs"><ul><br><li>-WWII German Land Customs Majors Uniform!
+									<br><br><br><br>-Basic bid is 1000$.
+								  <br><br><br><br>-For description click anywhere inside this box!</li></ul></a>
+					
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li>
+							<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+								<div class="flipper">
+									<div class="front">
+                      <img src="/images/product/p3.jpeg" class ="fimg"> 
+									</div>
+									<div class="back">
+										<a class="imgLink" href="desc3.ejs"><ul><br><li>-A Grey Schist Figure Of A Seated Buddha!
+										<br><br><br><br>-Basic bid is 1000Rs.
+								    <br><br><br><br>-For description click anywhere inside this box!</li></ul></a>
+					
+									</div>
+								</div>
+							</div>
+						</li>
+
+		<li>
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+					<div class="flipper">
+						<div class="front">
+                <img src="/images/product/p4.jpeg" class ="fimg"> 
+						</div>
+						<div class="back">
+							<a class="imgLink" href="desc4.ejs"><ul><br><li>-Talktel Antique Look Corded Landline Phone!
+							<br><br><br><br>-Basic bid is 1000Rs.
+							<br><br><br><br>-For description click anywhere inside this box!</li></ul></a>
+					
+						</div>
+					</div>
+				</div>
+			</li>
+				
+
+	</ul>
+</div>
+  
+  
+
+</body>
+</html>
+

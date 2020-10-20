@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  	/******/
+	.screen-reader-only {
+		top:auto;
+		width:1px;
+		height:1px;
+		left:-10000px;
+		overflow:hidden;
+		position:absolute;
+	}
+	.action.screen-reader-only {left:auto;}
+	ul li {list-style-type: none}
+	/******/
+
+	/* simple */
+	#grid .flip-container, #grid :nth-child(0):focus {
+		-webkit-perspective: 1000;
+		-moz-perspective: 1000;
+		-ms-perspective: 1000;
+		perspective: 1000;
+
+		-ms-transform: perspective(1000px);
+		-moz-transform: perspective(1000px);
+			-moz-transform-style: preserve-3d; 
+			-ms-transform-style: preserve-3d; 
+
+
+	}
+		/* START: Accommodating for IE */
+		
+	#grid .flip-container:hover .back, #grid .flip-container.hover .back, #grid :nth-child(1):focus {
+	    -webkit-transform: rotateY(0deg);
+	    -moz-transform: rotateY(0deg);
+	    -o-transform: rotateY(0deg);
+	    -ms-transform: rotateY(0deg);
+	    transform: rotateY(0deg);
+	}
+
+	#grid .flip-container:hover .front, #grid .flip-container.hover .front, #grid :nth-child(1):focus {
+	    -webkit-transform: rotateY(180deg);
+	    -moz-transform: rotateY(180deg);
+	    -o-transform: rotateY(180deg);
+	    transform: rotateY(180deg);
+	}
+	
+	/* END: Accommodating for IE */
+
+	#grid .flip-container, #grid .front, #grid .back {
+		width: 300px;
+		height: 300px;
+	}
+
+	#grid .flipper, #grid :nth-child(1):focus {
+		-webkit-transition: 1s;
+		-webkit-transform-style: preserve-3d;
+		-ms-transition: 1s;
+
+		-moz-transition: 1s;
+		-moz-transform: perspective(1000px);
+		-moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+
+		transition: 1s;
+		transform-style: preserve-3d;
+
+		position: relative;
+	}
+
+	#grid .front, #grid .back {
+		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+		backface-visibility: hidden;
+
+	    -webkit-transition: 1s;
+	    -webkit-transform-style: preserve-3d;
+	    -webkit-transform: rotateY(0deg);
+
+	    -moz-transition: 1s;
+	    -moz-transform-style: preserve-3d;
+	    -moz-transform: rotateY(0deg);
+
+	    -o-transition: 1s;
+	    -o-transform-style: preserve-3d;
+	    -o-transform: rotateY(0deg);
+
+	    -ms-transition: 1s;
+	    -ms-transform-style: preserve-3d;
+	    -ms-transform: rotateY(0deg);
+
+	    transition: 1s;
+	    transform-style: preserve-3d;
+	    transform: rotateY(0deg);
+
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	#grid .front {
+		-webkit-transform: rotateY(0deg);
+		-ms-transform: rotateY(0deg);
+		/*z-index: 2;*/
+	}
+	#grid :nth-child(0):focus { z-index: 2; }
+
+	#grid .back {
+		-webkit-transform: rotateY(-180deg);
+	    -moz-transform: rotateY(-180deg);
+	    -o-transform: rotateY(-180deg);
+	    -ms-transform: rotateY(-180deg);
+	    transform: rotateY(-180deg);
+	}
+
+	#grid .front .name {
+		font-size: 2em;
+		display: inline-block;
+		background: rgba(33, 33, 33, 0.9);
+		color: #f8f8f8;
+		font-family: Courier;
+		padding: 5px 10px;
+		border-radius: 5px;
+		bottom: 60px;
+		left: 25%;
+		position: absolute;
+		text-shadow: 0.1em 0.1em 0.05em #333;
+		display: none;
+
+		-webkit-transform: rotate(-20deg);
+		-moz-transform: rotate(-20deg);
+		-ms-transform: rotate(-20deg);
+		transform: rotate(-20deg);
+	}
+
+	#grid .back-logo {
+		position: absolute;
+		top: 40px;
+		left: 90px;
+		width: 160px;
+		height: 117px;
+		background: url(logo.png) 0 0 no-repeat;
+	}
+
+	#grid .back-title {
+		font-weight: bold;
+		color: #00304a;
+		position: absolute;
+		top: 180px;
+		left: 0;
+		right: 0;
+		text-align: center;
+		text-shadow: 0.1em 0.1em 0.05em #acd7e5;
+		font-family: Courier;
+		font-size: 22px;
+	}
+
+	#grid .back p {
+		position: absolute;
+		bottom: 40px;
+		left: 0;
+		right: 0;
+		text-align: center;
+		padding: 0 20px;
+		font-size: 18px;
+	}
+	
+	#grid a.imgLink {
+		display:block;
+    width:150px;
+		height:180px;
+    /* IE8 Fallback */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+	#grid a.imgLink2 {
+	  display:block;
+		width:150px;
+		height:180px;
+		
+    /* IE8 Fallback */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+	#grid a.imgLink3 {
+	  display:block;
+    width:150px;
+    height:180px;
+    
+    /* IE8 Fallback */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+
+	#grid ul {width:1400px;}
+	#grid ul li {
+		padding:10px 20px 75px 23px;
+		float:left;
+	}
+
+	#grid .flip-container :first-child:focus {outline: none;}
+
+	/*.flip-container :nth-child(0) */
+	/* End Thumbnails */
+</style>
+</head>
+
+<body>
+
+  <div id="grid">
+	<ul>
+
+			<li>
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+                
+                <img src="/images/product/p1.jpeg" id='p1'>  
+							</div>
+							
+							<div class="back">
+								<a class="imgLink" href="desc1.ejs" title="Voosh!">Hi<!-- <img src="Cool-Plain-Grey-Background1.jpg"> --><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				<li>
+						<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+							<div class="flipper">
+								<div class="front">
+									<img src="/images/product/p1.jpeg"> 
+								</div>
+								<div class="back">
+									<a class="imgLink2" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li>
+							<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+								<div class="flipper">
+									<div class="front">
+                      <img src="/images/product/p1.jpeg"> 
+									</div>
+									<div class="back">
+										<a class="imgLink3" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+									</div>
+								</div>
+							</div>
+						</li>
+
+		<li>
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+					<div class="flipper">
+						<div class="front">
+                <img src="/images/product/p1.jpeg"> 
+						</div>
+						<div class="back">
+							<a class="imgLink4" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+						</div>
+					</div>
+				</div>
+			</li>
+
+			<li>
+					<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+						<div class="flipper">
+							<div class="front">
+								<img src="/images/product/p1.jpeg"> 
+							</div>
+							<div class="back">
+								<a class="imgLink5" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+							</div>
+						</div>
+					</div>
+				</li>
+
+				<li>
+						<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+							<div class="flipper">
+								<div class="front">
+                    <img src="/images/product/p1.jpeg"> 
+								</div>
+								<div class="back">
+									<a class="imgLink6" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li>
+							<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+								<div class="flipper">
+									<div class="front">
+										<img src="/images/product/p1.jpeg"> 
+									</div>
+									<div class="back">
+										<a class="imgLink7" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+									</div>
+								</div>
+							</div>
+						</li>
+
+						<li>
+								<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+									<div class="flipper">
+										<div class="front">
+											<img src="/images/product/p1.jpeg"> 
+										</div>
+										<div class="back">
+											<a class="imgLink8" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+										</div>
+									</div>
+								</div>
+							</li>
+
+							<li>
+									<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+										<div class="flipper">
+											<div class="front">
+												<img src="/images/product/p1.jpeg"> 
+											</div>
+											<div class="back">
+												<a class="imgLink9" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+											</div>
+										</div>
+									</div>
+								</li>
+
+								<li>
+										<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+											<div class="flipper">
+												<div class="front">
+													<img src="/images/product/p1.jpeg"> 
+												</div>
+												<div class="back">
+													<a class="imgLink10" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+												</div>
+											</div>
+										</div>
+									</li>
+
+									
+									<li>
+											<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+												<div class="flipper">
+													<div class="front">
+														<img src="/images/product/p1.jpeg"> 
+													</div>
+													<div class="back">
+														<a class="imgLink11" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+													</div>
+												</div>
+											</div>
+										</li>
+
+										<li>
+												<div class="flip-container" ontouchstart="this.classList.toggle('hover');" ontouchend="this.classList.toggle('hover');">
+													<div class="flipper">
+														<div class="front">
+															<img src="/images/product/p1.jpeg"> 
+														</div>
+														<div class="back">
+															<a class="imgLink12" href="https://www.sea.edu/images/blog/sea_blog/Tonga.png" title="Voosh!"><img src="Cool-Plain-Grey-Background1.jpg"><p class="screen-reader-only">layered or solo, soft & shapely, starting at $9. Click to see more</p></a>
+														</div>
+													</div>
+												</div>
+											</li>
+				
+
+	</ul>
+</div>
+  
+  
+
+</body>
+</html>
+
